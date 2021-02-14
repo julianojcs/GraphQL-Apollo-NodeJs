@@ -8,7 +8,13 @@ const usuarios = [
     email: 'apfjuliano@gmail.com',
     idade: 44,
     salario_real: 19230.9,
-    vip: true
+    vip: true,
+    perfil_id: 1,
+    telefones: {
+      main: '(27)3026-4307',
+      mobile: '(27)98133-0708',
+      whatsapp: '(27)98133-0708'
+    }
   },
   {
     id: 2,
@@ -16,7 +22,12 @@ const usuarios = [
     email: 'rsouza@gmail.com',
     idade: 31,
     salario_real: 9300.92,
-    vip: false
+    vip: false,
+    perfil_id: 2,
+    telefones: {
+      main: '(27)3000-3097',
+      mobile: '(27)93000-3097'
+    }
   },
   {
     id: 1,
@@ -24,7 +35,11 @@ const usuarios = [
     email: 'brusilva@gmail.com',
     idade: 24,
     salario_real: 1330.9,
-    vip: false
+    vip: false,
+    perfil_id: 2,
+    telefones: {
+      main: '(27)3026-4000'
+    }
   }
 ]
 
@@ -41,6 +56,12 @@ const perfis = [
 
 const typeDefs = gql`
   scalar Date
+
+  type Telefones {
+    main: String
+    mobile: String
+    whatsapp: String
+  }
 
   type Perfil {
     id: ID!
@@ -63,6 +84,8 @@ const typeDefs = gql`
     vip: Boolean
     username: String
     salarioEmReal: String
+    perfil: Perfil
+    telefones: Telefones
   }
 
   # Pontos de entrada da sua API!
@@ -99,6 +122,11 @@ const resolvers = {
     },
     username(usuario) {
       return usuario.email.split('@')[0]
+    },
+    perfil(usuario) {
+      const selecionado = perfis
+        .filter(p => p.id == usuario.perfil_id)
+      return selecionado ? selecionado[0] : null
     }
   },
 
