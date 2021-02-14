@@ -1,0 +1,23 @@
+type Telefones {
+  main: String
+  mobile: String
+  whatsapp: String
+}
+
+type Perfil {
+  id: ID!
+  nome: String!
+}
+
+type Usuario {
+  id: ID!
+  nome: String!
+  email: String!
+  idade: Int
+  salario: Float
+  vip: Boolean
+  username: String
+  salarioEmReal: String
+  perfil: Perfil
+  telefones: Telefones
+}
