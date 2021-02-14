@@ -27,7 +27,7 @@ Learning an Apollo Server making and graphQL end-point API
 
 Open the url [http://localhost:4000/](http://localhost:4000/) to make the tests requests:
 
-Test bellow Queries at GraphQL's playground?
+Test bellow Queries at GraphQL's playground:
 
 ```
 {

@@ -1,7 +1,51 @@
 const { ApolloServer, gql } = require('apollo-server')
+const { argsToArgsConfig } = require('graphql/type/definition')
+
+const usuarios = [
+  {
+    id: 1,
+    nome: 'Juliano Costa',
+    email: 'apfjuliano@gmail.com',
+    idade: 44,
+    salario_real: 19230.9,
+    vip: true
+  },
+  {
+    id: 2,
+    nome: 'Rafael Souza',
+    email: 'rsouza@gmail.com',
+    idade: 31,
+    salario_real: 9300.92,
+    vip: false
+  },
+  {
+    id: 1,
+    nome: 'Bruna Silva',
+    email: 'brusilva@gmail.com',
+    idade: 24,
+    salario_real: 1330.9,
+    vip: false
+  }
+]
+
+const perfis = [
+  {
+    id: 1,
+    nome: 'Admininstrador'
+  },
+  {
+    id: 2,
+    nome: 'Comum'
+  }
+]
 
 const typeDefs = gql`
   scalar Date
+
+  type Perfil {
+    id: ID!
+    nome: String!
+  }
 
   type Produto {
     nome: String!
@@ -28,6 +72,10 @@ const typeDefs = gql`
     usuarioLogado: Usuario
     produtoEmDestaque: Produto
     numerosMegaSena: [Int!]!
+    usuarios: [Usuario]
+    usuario(id: ID!): Usuario
+    perfis: [Perfil]
+    perfil(id: ID!): Perfil
   }
 `
 
@@ -80,6 +128,22 @@ const resolvers = {
       return Array(6).fill(0)
         .map(n => parseInt(Math.random() * 60 + 1))
         .sort(crescente)
+    },
+    usuarios: () => {
+      return usuarios
+    },
+    usuario: (_, { id }) => {
+      const selecionado = usuarios
+        .filter(u => u.id == id)
+      return selecionado ? selecionado[0] : null
+    },
+    perfis: () => {
+      return perfis
+    },
+    perfil: (_, { id }) => {
+      const selecionado = perfis
+        .filter(p => p.id == id)
+      return selecionado ? selecionado[0] : null
     }
   }
 }
