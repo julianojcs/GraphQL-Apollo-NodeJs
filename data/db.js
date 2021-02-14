@@ -11,7 +11,8 @@ const usuarios = [
       main: '(27)3026-4307',
       mobile: '(27)98133-0708',
       whatsapp: '(27)98133-0708'
-    }
+    },
+    status: 'ATIVO'
   },
   {
     id: 2,
@@ -24,7 +25,8 @@ const usuarios = [
     telefones: {
       main: '(27)3000-3097',
       mobile: '(27)93000-3097'
-    }
+    },
+    status: 'ATIVO'
   },
   {
     id: 1,
@@ -36,7 +38,8 @@ const usuarios = [
     perfil_id: 2,
     telefones: {
       main: '(27)3026-4000'
-    }
+    },
+    status: 'INATIVO'
   }
 ]
 

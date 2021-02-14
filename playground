@@ -1,41 +1,41 @@
 query{
    hello
-  # horaCerta
-  # usuarioLogado {
-  #   id
-  #   nome
-  #   email
-  #   idade
-  #   salario
-  #   salarioEmReal
-  #   vip
-  #   username
-  # }
-  # produtoEmDestaque {
-  #   nome
-  #   preco
-  #   desconto
-  #   precoComDesconto
-  # }
-  # numerosMegaSena
-  # usuario(id: 1) {
-  #   id nome email idade vip perfil
-  # }
-  # usuarios {
-  #   id nome email idade vip 
-  #   perfil{nome}
-  #   telefones{
-  #     main
-  #     mobile
-  #     whatsapp
-  #   }
-  # }
-  # perfil(id: 1) {
-  #   nome
-  # }
-  # perfis {
-  #   id nome
-  # }
+  horaCerta
+  usuarioLogado {
+    id
+    nome
+    email
+    idade
+    salario
+    salarioEmReal
+    vip
+    username
+  }
+  produtoEmDestaque {
+    nome
+    preco
+    desconto
+    precoComDesconto
+  }
+  numerosMegaSena
+  usuario(id: 1) {
+    id nome email idade vip perfil
+  }
+  usuarios {
+    id nome email idade vip 
+    perfil{nome}
+    telefones{
+      main
+      mobile
+      whatsapp
+    }
+  }
+  perfil(id: 1) {
+    nome
+  }
+  perfis {
+    id nome
+  }
   usuario(id: 1) {
      ...usuarioCompleto 
     salarioEmReal 

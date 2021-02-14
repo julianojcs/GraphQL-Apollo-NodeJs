@@ -27,11 +27,12 @@ Learning an Apollo Server making and graphQL end-point API
 
 Open the url [http://localhost:4000/](http://localhost:4000/) to make the tests requests:
 
-Test bellow Queries at GraphQL's playground:
+Test Queries at GraphQL's playground:
 
+Query examples:
 ```
-{
-  ola
+query{
+   hello
   horaCerta
   usuarioLogado {
     id
@@ -50,5 +51,41 @@ Test bellow Queries at GraphQL's playground:
     precoComDesconto
   }
   numerosMegaSena
+  usuario(id: 1) {
+    id nome email idade vip perfil
+  }
+  usuarios {
+    id nome email idade vip 
+    perfil{nome}
+    telefones{
+      main
+      mobile
+      whatsapp
+    }
+  }
+  perfil(id: 1) {
+    nome
+  }
+  perfis {
+    id nome
+  }
+  usuario(id: 1) {
+     ...usuarioCompleto 
+    salarioEmReal 
+    username 
+    telefones{
+      main
+    }
+  }
+  usuarios {
+    ...usuarioCompleto
+  }
+}
+
+fragment usuarioCompleto on Usuario {
+  id nome email idade salario vip 
+  perfil { nome id }
 }
 ```
+
+# You can find anothers query examples into the /playground file.
