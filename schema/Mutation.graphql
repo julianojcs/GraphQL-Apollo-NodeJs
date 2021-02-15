@@ -3,12 +3,21 @@ type Mutation {
     dados: UsuarioInput!
   ): Usuario!
 
-  excluirUsuario(id: Int): Usuario
+  # excluirUsuario(id: Int): Usuario
+
+  excluirUsuario(
+    filtro: UsuarioFiltro!
+  ): Usuario
+
+  # alterarUsuario(
+  #   id: Int
+  #   nome: String  # Virgula entre os parâmetros é opcional
+  #   email: String
+  #   idade: Int
+  # ): Usuario
 
   alterarUsuario(
-    id: Int
-    nome: String  # Virgula entre os parâmetros é opcional
-    email: String
-    idade: Int
+    filtro: UsuarioFiltro!
+    dados: UsuarioInput!
   ): Usuario
 }

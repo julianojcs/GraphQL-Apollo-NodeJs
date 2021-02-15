@@ -11,12 +11,12 @@ type Telefones {
 }
 
 type Perfil {
-  id: ID!
+  id: Int!
   nome: String!
 }
 
 type Usuario {
-  id: ID!
+  id: Int!
   nome: String!
   email: String!
   idade: Int
@@ -33,4 +33,9 @@ input UsuarioInput {
   nome: String
   email: String
   idade: Int
+}
+
+input UsuarioFiltro {
+  id: Int
+  email: String
 }

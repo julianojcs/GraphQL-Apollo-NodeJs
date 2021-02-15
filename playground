@@ -44,6 +44,14 @@ query{
       main
     }
   }
+#  usuario(filtro:{id: null, email: "apfjuliano@gmail.com"}) {
+#     ...usuarioCompleto 
+#    salarioEmReal 
+#    username 
+#    telefones{
+#      main
+#    }
+#  }
   usuarios {
     ...usuarioCompleto
   }
