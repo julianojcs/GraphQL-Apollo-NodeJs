@@ -6,12 +6,12 @@ const emailExistente = (usuarios, email) => {
 
 module.exports = {
   // args = { nome, email, idade }
-  novoUsuario: (root, args) => {
-    emailExistente(usuarios, args.email)
+  novoUsuario: (root, { dados }) => {
+    emailExistente(usuarios, dados.email)
 
     const novo = {
       id: proximoId(),
-      ...args,
+      ...dados,
       perfil_id: 1,
       status: 'ATIVO'
     }
@@ -19,10 +19,9 @@ module.exports = {
     return novo
   },
 
-  excluirUsuario: (root, {id}) => {
-    const i = usuarios
-      .findIndex(u => u.id === id)
-    
+  excluirUsuario: (root, { id }) => {
+    const i = usuarios.findIndex((u) => u.id === id)
+
     if (i < 0) return null
 
     const excluidos = usuarios.splice(i, 1)
@@ -30,15 +29,14 @@ module.exports = {
   },
 
   alterarUsuario: (root, args) => {
-    const i = usuarios
-      .findIndex(u => u.id === args.id)
-    
-    if (i<0) return null
+    const i = usuarios.findIndex((u) => u.id === args.id)
+
+    if (i < 0) return null
 
     usuarios[i].nome = args.nome
     usuarios[i].email = args.email
-    if(args.idade) {
-        usuarios[i].idade = args.idade
+    if (args.idade) {
+      usuarios[i].idade = args.idade
     }
     return usuarios[i]
 
