@@ -1,13 +1,14 @@
 const { usuarios, proximoId } = require('../data/db')
+const emailExistente = (usuarios, email) => {
+  if (usuarios.some((u) => u.email === email))
+    throw new Error('E-mail já existente')
+}
 
 module.exports = {
   // args = { nome, email, idade }
   novoUsuario: (root, args) => {
-    const emailExistente = usuarios.some((u) => u.email === args.email)
+    emailExistente(usuarios, args.email)
 
-    if (emailExistente) {
-      throw new Error('E-mail já existente')
-    }
     const novo = {
       id: proximoId(),
       ...args,
@@ -22,8 +23,31 @@ module.exports = {
     const i = usuarios
       .findIndex(u => u.id === id)
     
-    if(i<0) return null
+    if (i < 0) return null
+
     const excluidos = usuarios.splice(i, 1)
     return excluidos ? excluidos[0] : null
+  },
+
+  alterarUsuario: (root, args) => {
+    const i = usuarios
+      .findIndex(u => u.id === args.id)
+    
+    if (i<0) return null
+
+    usuarios[i].nome = args.nome
+    usuarios[i].email = args.email
+    if(args.idade) {
+        usuarios[i].idade = args.idade
+    }
+    return usuarios[i]
+
+    //! Outra forma de se fazer
+    // const alterado = {
+    //   ...usuarios[1],
+    //   ...args
+    // }
+    // usuarios.splice(i, 1, alterado)
+    // return alterado
   }
 }
