@@ -88,13 +88,31 @@ mutation {
   #   id nome email idade
   # }
   
-  novoUsuario(
-    dados: {
-      nome: "Ana com Input",
-      email: "ana@gmail.com"
-      idade: 34
+  # novoUsuario(
+  #   dados: {
+  #     nome: "Ana com Input",
+  #     email: "ana@gmail.com"
+  #     idade: 34
+  #   }
+  # ) {
+  #   id nome email perfil {nome} status username
+  # }
+    
+  # excluirUsuario(filtro: {email: "brusilva@gmail.com"}) {
+  #   nome id
+  # }
+  
+  alterarUsuario(
+    filtro: {
+      id: 1 
     }
-  ) {
-    id nome email perfil {nome} status username
+    dados: {
+      nome: "João Alterado"
+    	email: "joaoalterado@gmail.com"
+    	idade: 12
+    }
+  )
+  {
+    id nome email idade
   }
 }
